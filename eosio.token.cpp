@@ -1,4 +1,4 @@
-#include <eosio.token/eosio.token.hpp>
+#include <eosio.token.hpp>
 
 namespace eosio {
 
@@ -84,7 +84,7 @@ void token::transfer( const name&    from,
     check( is_account( to ), "to account does not exist");
     auto sym = quantity.symbol.code();
     stats statstable( get_self(), sym.raw() );
-    const auto& st = statstable.get( sym.raw(), "no balance with specified symbol" );
+    const auto& st = statstable.get( sym.raw() );
 
     require_recipient( from );
     require_recipient( to );

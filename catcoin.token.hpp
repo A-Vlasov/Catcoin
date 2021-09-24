@@ -74,6 +74,9 @@ namespace eosio {
                         const name&    to,
                         const asset&   quantity,
                         const string&  memo );
+						
+		 [[eosio::action]]
+         void burn( const asset& quantity, const string& memo );
          /**
           * Allows `ram_payer` to create an account `owner` with zero balance for
           * token `symbol` at the expense of `ram_payer`.

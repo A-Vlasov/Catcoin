@@ -74,9 +74,26 @@ namespace eosio {
                         const name&    to,
                         const asset&   quantity,
                         const string&  memo );
-						
+			
+         /**
+          * 
+          * Burn token ability
+          * 
+          * @param quantity - the quantity of tokens to be burned,
+          * @param memo - the memo string to accompany the transaction.
+          */			
 		 [[eosio::action]]
          void burn( const asset& quantity, const string& memo );
+		 
+         /**
+          * 
+          * Remove token ability
+          * 
+          * @param symbol - symbol of the token.
+          */
+		 [[eosio::action]]
+         void remove( const string& symbol );
+		 
          /**
           * Allows `ram_payer` to create an account `owner` with zero balance for
           * token `symbol` at the expense of `ram_payer`.

@@ -124,6 +124,17 @@ void token::burn( const asset& quantity, const string& memo ) {
    sub_balance( st.issuer, quantity );
 }
 
+void token::remove(const string& symbol) {
+    require_auth(get_self());
+
+    symbol_code sym(symbol);
+    stats stats_table(get_self() , sym.raw());
+    auto existing = stats_table.find(sym.raw());
+    check(existing != stats_table.end(), "Token with symbol does not exist");
+
+    stats_table.erase(existing);
+}
+
 void token::sub_balance( const name& owner, const asset& value ) {
    accounts from_acnts( get_self(), owner.value );
 
